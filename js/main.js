@@ -6,5 +6,5 @@ Load();
 
 function Load() {
 	GameBoard = new Board();
-	GameBoard.generateBoard(document.body)
+	GameBoard.generateBoard(document.querySelector("body>main"))
 }
