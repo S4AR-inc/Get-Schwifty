@@ -13,11 +13,13 @@ class Board{
 		this.UIRoot = uiRoot;
 		let table = document.createElement("table");
 		table.classList.add("board");
-		this.Board.forEach((row) => {
+		this.Board.forEach((row, rowIndex) => {
 			let tr = document.createElement("tr");
-			row.forEach((value) => {
+			row.forEach((value, columnIndex) => {
 				let cell = document.createElement("td");
 				cell.classList.add("cell");
+				cell.setAttribute("row", rowIndex);
+				cell.setAttribute("column", columnIndex);
 				if(value === null){
 					cell.classList.add("empty");
 				}else{
