@@ -29,6 +29,29 @@ class Board{
 			});
 			table.appendChild(tr);
 		});
-		this.UIRoot.appendChild(table)
+		this.UIRoot.appendChild(table);
+	}
+
+	MoveCell(from){
+		if (from.y < 0 || from.y >= this.Board.length ||
+			from.x < 0 || from.x >= this.Board[from.y].length){
+			console.warn("The selected cell to move from is out of range");
+			return;
+		}
+		if ((Math.abs(from.x - this.Empty.x) !== 1 || from.y - this.Empty.y !== 0) &&
+			(from.x - this.Empty.x !== 0 || Math.abs(from.y - this.Empty.y) !== 1)){
+			console.warn("The selected cell to move from is not adjacent to the empty cell");
+			return;
+		}
+		
+		this.Board[this.Empty.y][this.Empty.x] = this.Board[from.y][from.x];
+		this.Board[from.y][from.x] = null;
+
+		let cell = this.UIRoot.querySelector(`.board .cell[row='${from.y}'][column='${from.x}']`);
+		let empty = this.UIRoot.querySelector(`.board .cell.empty`);
+		empty.innerText = cell.innerText;
+		cell.innerText = "";
+		empty.classList.remove("empty");
+		cell.classList.add("empty");
 	}
 }
