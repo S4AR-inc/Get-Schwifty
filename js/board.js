@@ -1,3 +1,4 @@
+export { Board };
 class Board{
 	constructor(){
 		this.Board = [
@@ -16,16 +17,16 @@ class Board{
 			let tr = document.createElement("tr");
 			row.forEach((value) => {
 				let cell = document.createElement("td");
-				cell.classList("cell");
+				cell.classList.add("cell");
 				if(value === null){
 					cell.classList.add("empty");
 				}else{
-					cell.innerText(value);
+					cell.innerText = value;
 				}
 				tr.appendChild(cell);
 			});
 			table.appendChild(tr);
 		});
-		this.uiRoot.appendChild(table)
+		this.UIRoot.appendChild(table)
 	}
 }
