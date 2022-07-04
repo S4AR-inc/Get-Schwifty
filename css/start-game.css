@@ -5,6 +5,7 @@
 .game-options > span > div{
 	display: flex;
 	justify-content: center;
+	padding: 2vh;
 }
 
 .game-options label{
