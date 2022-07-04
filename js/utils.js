@@ -5,7 +5,14 @@ function deepFreeze(object) {
 	return Object.freeze(object);
 }
 
-const exports = { deepFreeze };
-export { deepFreeze };
+function IMECompositionFilter(next, keyboardEvent) {
+	if (keyboardEvent.isComposing || keyboardEvent.keyCode === 229) {
+		return;
+	}
+	next(keyboardEvent);
+}
+
+const exports = { deepFreeze, IMECompositionFilter };
+export { deepFreeze, IMECompositionFilter };
 
 window.utils = exports
