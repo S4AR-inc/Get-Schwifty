@@ -8,10 +8,15 @@ const DIRECTION = deepFreeze({
 });
 class Board{
 	constructor(){
+		// this.Board = [
+		// 	[6, null, 7],
+		// 	[3, 2, 8],
+		// 	[4, 5, 1]
+		// ];
 		this.Board = [
-			[6, null, 7],
-			[3, 2, 8],
-			[4, 5, 1]
+			[1, 2, 3],
+			[4, 5, 6],
+			[7, 8, null]
 		];
 		this.Empty = {x: 1, y: 0};
 	}
@@ -65,6 +70,18 @@ class Board{
 
 	MoveByDirection(direction){
 		this.MoveCell({x: this.Empty.x - direction.x, y: this.Empty.y - direction.y})
+	}
+
+	CheckWin(){
+		return this.Board.flat().every((value, index, arr) => {
+			if (index === arr.length - 1){
+				return value === null;
+			}
+			if (index !== arr.length - 2){
+				return value + 1 === arr[index + 1];
+			}
+			return true;
+		});
 	}
 }
 
