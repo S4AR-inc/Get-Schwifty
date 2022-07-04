@@ -112,6 +112,11 @@ class Board{
 			return true;
 		});
 	}
+
+	CleanUp(){
+		this.UIRoot.removeChild(this.UIRoot.querySelector(".board"));
+		this.UIRoot.classList.remove("board-ui-root");
+	}
 }
 
 const exports = { Board, DIRECTION };
