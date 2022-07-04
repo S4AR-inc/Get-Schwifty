@@ -1,5 +1,3 @@
-export { Board, DIRECTION };
-
 import { deepFreeze } from "./utils.js"
 
 const DIRECTION = deepFreeze({
@@ -69,3 +67,8 @@ class Board{
 		this.MoveCell({x: this.Empty.x - direction.x, y: this.Empty.y - direction.y})
 	}
 }
+
+const exports = { Board, DIRECTION };
+export { Board, DIRECTION };
+
+window.board = exports;
