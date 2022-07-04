@@ -1,4 +1,4 @@
-import { deepFreeze } from "./utils.js"
+import { deepFreeze } from "./utils.js";
 
 const DIRECTION = deepFreeze({
 	LEFT:	{x: -1	,y: 0	},
@@ -56,7 +56,7 @@ class Board{
 		this.Empty = from;
 
 		let cell = this.UIRoot.querySelector(`.board .cell[row='${from.y}'][column='${from.x}']`);
-		let empty = this.UIRoot.querySelector(`.board .cell.empty`);
+		let empty = this.UIRoot.querySelector(".board .cell.empty");
 		empty.innerText = cell.innerText;
 		cell.innerText = "";
 		empty.classList.remove("empty");
@@ -64,7 +64,7 @@ class Board{
 	}
 
 	MoveByDirection(direction){
-		this.MoveCell({x: this.Empty.x - direction.x, y: this.Empty.y - direction.y})
+		this.MoveCell({x: this.Empty.x - direction.x, y: this.Empty.y - direction.y});
 	}
 
 	CheckWin(){

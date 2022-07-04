@@ -1,5 +1,5 @@
-import { Board, DIRECTION } from "./board.js"
-import { deepFreeze, IMECompositionFilter } from "./utils.js"
+import { Board, DIRECTION } from "./board.js";
+import { deepFreeze, IMECompositionFilter } from "./utils.js";
 
 let GameBoard;
 
@@ -23,7 +23,7 @@ function Load() {
 			}
 			GameBoard.MoveByDirection(direction);
 			if (GameBoard.CheckWin()){
-				alert("You win!")
+				alert("You win!");
 			}
 		},keyboardEvent);
 	});
