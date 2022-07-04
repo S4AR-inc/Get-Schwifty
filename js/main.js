@@ -1,6 +1,8 @@
 import { Board, DIRECTION } from "./board.js";
 import { DeepFreeze, IMECompositionFilter } from "./utils.js";
+import { GameOptions } from "./gameOptions.js";
 
+let GameOptionsMenu;
 let GameBoard;
 
 const KEYS_DIRECTION_MAP = DeepFreeze([
@@ -13,8 +15,14 @@ const KEYS_DIRECTION_MAP = DeepFreeze([
 Load();
 
 function Load() {
+	GameOptionsMenu = new GameOptions();
+	GameOptionsMenu.addEventListener("start-game", StartGame);
+	GameOptionsMenu.Show(document.querySelector("body>main"));
+}
+
+function StartGame(eventData){
 	GameBoard = new Board();
-	GameBoard.GenerateBoard(3);
+	GameBoard.GenerateBoard(eventData.detail.size);
 	GameBoard.GenerateBoardUI(document.querySelector("body>main"));
 	document.addEventListener("keydown", (keyboardEvent) => {
 		IMECompositionFilter((keyboardEvent) => {
