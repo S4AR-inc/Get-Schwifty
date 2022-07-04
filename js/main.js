@@ -18,10 +18,13 @@ function Load() {
 	document.addEventListener("keydown", (keyboardEvent) => {
 		IMECompositionFilter((keyboardEvent) => {
 			let direction = KEYS_DIRECTION_MAP.find(mapping => mapping.keys.includes(keyboardEvent.code))?.direction;
-			if(direction === undefined){
+			if (direction === undefined){
 				return;
 			}
 			GameBoard.MoveByDirection(direction);
+			if (GameBoard.CheckWin()){
+				alert("You win!")
+			}
 		},keyboardEvent);
 	});
 }

@@ -8,15 +8,10 @@ const DIRECTION = deepFreeze({
 });
 class Board{
 	constructor(){
-		// this.Board = [
-		// 	[6, null, 7],
-		// 	[3, 2, 8],
-		// 	[4, 5, 1]
-		// ];
 		this.Board = [
-			[1, 2, 3],
-			[4, 5, 6],
-			[7, 8, null]
+			[6, null, 7],
+			[3, 2, 8],
+			[4, 5, 1]
 		];
 		this.Empty = {x: 1, y: 0};
 	}
