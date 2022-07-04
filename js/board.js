@@ -1,4 +1,13 @@
-export { Board };
+export { Board, DIRECTION };
+
+import { deepFreeze } from "./utils.js"
+
+const DIRECTION = deepFreeze({
+	LEFT:	{x: -1	,y: 0	},
+	RIGHT:	{x: 1	,y: 0	},
+	UP:		{x: 0	,y: -1	},
+	DOWN:	{x: 0	,y: 1	},
+});
 class Board{
 	constructor(){
 		this.Board = [
