@@ -55,6 +55,7 @@ class Board{
 		
 		this.Board[this.Empty.y][this.Empty.x] = this.Board[from.y][from.x];
 		this.Board[from.y][from.x] = null;
+		this.Empty = from;
 
 		let cell = this.UIRoot.querySelector(`.board .cell[row='${from.y}'][column='${from.x}']`);
 		let empty = this.UIRoot.querySelector(`.board .cell.empty`);
