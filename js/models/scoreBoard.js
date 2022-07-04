@@ -8,9 +8,9 @@ class ScoreBoard{
 	_getOrInit(){
 		let scores = this.Storage.getItem(SCORE_KEY);
 		if (scores === null){
-			scores = JSON.stringify([]);
+			return [];
 		}
-		this.Scores = JSON.parse(scores);
+		return JSON.parse(scores);
 	}
 
 	Add(score){
