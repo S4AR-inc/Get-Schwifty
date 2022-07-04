@@ -8,6 +8,7 @@ const DIRECTION = DeepFreeze({
 });
 class Board{
 	constructor(){
+		this.PlayerData = {};
 	}
 
 	GenerateBoard(size = 3){
@@ -24,6 +25,8 @@ class Board{
 		for (let i = 0; i < size; i++) {
 			this.Board.push(flatBoard.splice(0, size));
 		}
+		this.PlayerData.size = size;
+		this.PlayerData.moves = 0;
 	}
 
 	_shuffleBoard(flatBoard){
@@ -73,6 +76,7 @@ class Board{
 		});
 		this.UIRoot.classList.add("board-ui-root");
 		this.UIRoot.appendChild(table);
+		this.PlayerData.startTime = new Date(Date.now());
 	}
 
 	MoveCell(from){
@@ -88,6 +92,8 @@ class Board{
 		this.Board[this.Empty.y][this.Empty.x] = this.Board[from.y][from.x];
 		this.Board[from.y][from.x] = null;
 		this.Empty = from;
+
+		this.PlayerData.moves++;
 
 		let cell = this.UIRoot.querySelector(`.board .cell[row='${from.y}'][column='${from.x}']`);
 		let empty = this.UIRoot.querySelector(".board .cell.empty");
@@ -116,6 +122,8 @@ class Board{
 	CleanUp(){
 		this.UIRoot.removeChild(this.UIRoot.querySelector(".board"));
 		this.UIRoot.classList.remove("board-ui-root");
+		this.PlayerData.gameLength = new Date(Date.now) - this.PlayerData.startTime;
+		return this.PlayerData;
 	}
 }
 
