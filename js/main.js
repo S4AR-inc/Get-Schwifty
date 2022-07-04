@@ -1,9 +1,9 @@
 import { Board, DIRECTION } from "./board.js";
-import { deepFreeze, IMECompositionFilter } from "./utils.js";
+import { DeepFreeze, IMECompositionFilter } from "./utils.js";
 
 let GameBoard;
 
-const KEYS_DIRECTION_MAP = deepFreeze([
+const KEYS_DIRECTION_MAP = DeepFreeze([
 	{keys: [ "ArrowLeft",	"KeyA" ], direction: DIRECTION.LEFT	},
 	{keys: [ "ArrowRight",	"KeyD" ], direction: DIRECTION.RIGHT},
 	{keys: [ "ArrowUp",		"KeyW" ], direction: DIRECTION.UP	},
@@ -14,7 +14,7 @@ Load();
 
 function Load() {
 	GameBoard = new Board();
-	GameBoard.generateBoard(document.querySelector("body>main"));
+	GameBoard.GenerateBoard(document.querySelector("body>main"));
 	document.addEventListener("keydown", (keyboardEvent) => {
 		IMECompositionFilter((keyboardEvent) => {
 			let direction = KEYS_DIRECTION_MAP.find(mapping => mapping.keys.includes(keyboardEvent.code))?.direction;

@@ -1,7 +1,7 @@
-function deepFreeze(object) {
+function DeepFreeze(object) {
 	Object.keys(object).forEach(prop => {
 		if (typeof object[prop] === "object"){
-			deepFreeze(object[prop]);
+			DeepFreeze(object[prop]);
 		}
 	});
 	return Object.freeze(object);
@@ -14,7 +14,7 @@ function IMECompositionFilter(next, keyboardEvent) {
 	next(keyboardEvent);
 }
 
-const exports = { deepFreeze, IMECompositionFilter };
-export { deepFreeze, IMECompositionFilter };
+const exports = { DeepFreeze, IMECompositionFilter };
+export { DeepFreeze, IMECompositionFilter };
 
 window.utils = exports;

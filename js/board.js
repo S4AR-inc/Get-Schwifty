@@ -16,7 +16,7 @@ class Board{
 		this.Empty = {x: 1, y: 0};
 	}
 
-	generateBoard(uiRoot){
+	GenerateBoard(uiRoot){
 		this.UIRoot = uiRoot;
 		let table = document.createElement("table");
 		table.classList.add("board");
