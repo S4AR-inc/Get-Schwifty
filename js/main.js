@@ -14,7 +14,8 @@ Load();
 
 function Load() {
 	GameBoard = new Board();
-	GameBoard.GenerateBoard(document.querySelector("body>main"));
+	GameBoard.GenerateBoard(3);
+	GameBoard.GenerateBoardUI(document.querySelector("body>main"));
 	document.addEventListener("keydown", (keyboardEvent) => {
 		IMECompositionFilter((keyboardEvent) => {
 			let direction = KEYS_DIRECTION_MAP.find(mapping => mapping.keys.includes(keyboardEvent.code))?.direction;

@@ -8,15 +8,50 @@ const DIRECTION = DeepFreeze({
 });
 class Board{
 	constructor(){
-		this.Board = [
-			[6, null, 7],
-			[3, 2, 8],
-			[4, 5, 1]
-		];
-		this.Empty = {x: 1, y: 0};
 	}
 
-	GenerateBoard(uiRoot){
+	GenerateBoard(size = 3){
+		let flatBoard = [...(new Array(size * size - 1)).keys()].map(value => value + 1);
+		flatBoard.push(null);
+		do {
+			this._shuffleBoard(flatBoard);
+		} while (!this._isValid(flatBoard, size));
+
+		
+		const emptyIndex = flatBoard.indexOf(null);
+		this.Empty = {x: emptyIndex % size, y: Math.floor(emptyIndex / size)};
+		this.Board = [];
+		for (let i = 0; i < size; i++) {
+			this.Board.push(flatBoard.splice(0, size));
+		}
+	}
+
+	_shuffleBoard(flatBoard){
+		for (let i = flatBoard.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			const temp = flatBoard[i];
+			flatBoard[i] = flatBoard[j];
+			flatBoard[j] = temp;
+		}
+	}
+
+	_isValid(flatBoard, size){
+		let flips = this._getFlips(flatBoard);
+		let totalFlips = flips.reduce((partialSum, flip) => partialSum + flip, 0);
+		if (size % 2 === 0){
+			totalFlips += Math.floor(flatBoard.indexOf(null) / size) + 1;
+		}
+		return totalFlips % 2 === 0;
+	}
+
+	_getFlips(flatBoard){
+		return flatBoard.map((current, currentIndex, arr) => 
+			arr.filter((next, nextIndex) => current !== null && next !== null &&
+											nextIndex > currentIndex && next < current).length
+		);
+	}
+
+	GenerateBoardUI(uiRoot){
 		this.UIRoot = uiRoot;
 		let table = document.createElement("table");
 		table.classList.add("board");
