@@ -71,6 +71,7 @@ class Board{
 			});
 			table.appendChild(tr);
 		});
+		this.UIRoot.classList.add("board-ui-root");
 		this.UIRoot.appendChild(table);
 	}
 
