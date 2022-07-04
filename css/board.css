@@ -1,0 +1,19 @@
+.board-ui-root{
+	width: 85vmin;
+	height: 85vmin;
+}
+.board{
+	width: 100%;
+	height: 100%;
+	border-collapse: collapse;
+	table-layout: fixed;
+}
+.cell{
+	text-align: center;
+	font-size: 5em;
+	font-family: "Segoe UI",Arial,sans-serif;
+	border: 2px solid black;
+}
+.cell.empty{
+	border: none;
+}
