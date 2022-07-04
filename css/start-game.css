@@ -1,0 +1,17 @@
+.game-options{
+	font-size: 3em;
+}
+
+.game-options > div{
+	display: flex;
+	justify-content: center;
+}
+
+.game-options label{
+	padding-right: 0.5em;
+}
+
+.game-options input[type=number]{
+	width: 5ch;
+	text-align: center;
+}
