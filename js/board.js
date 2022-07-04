@@ -64,4 +64,8 @@ class Board{
 		empty.classList.remove("empty");
 		cell.classList.add("empty");
 	}
+
+	MoveByDirection(direction){
+		this.MoveCell({x: this.Empty.x - direction.x, y: this.Empty.y - direction.y})
+	}
 }
