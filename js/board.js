@@ -1,6 +1,6 @@
-import { deepFreeze } from "./utils.js";
+import { DeepFreeze } from "./utils.js";
 
-const DIRECTION = deepFreeze({
+const DIRECTION = DeepFreeze({
 	LEFT:	{x: -1	,y: 0	},
 	RIGHT:	{x: 1	,y: 0	},
 	UP:		{x: 0	,y: -1	},
