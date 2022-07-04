@@ -122,7 +122,7 @@ class Board{
 	CleanUp(){
 		this.UIRoot.removeChild(this.UIRoot.querySelector(".board"));
 		this.UIRoot.classList.remove("board-ui-root");
-		this.PlayerData.gameLength = new Date(Date.now) - this.PlayerData.startTime;
+		this.PlayerData.gameLength = new Date(Date.now()) - this.PlayerData.startTime;
 		return this.PlayerData;
 	}
 }
